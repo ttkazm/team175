@@ -19,6 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('register', [ItemController::class, 'show'])->name('name');
-Route::get('register', [ItemController::class, 'types']);
-Route::post('register', [ItemController::class, 'store'])->name('store');
+Route::get('store', [ItemController::class, 'show'])->name('name');
+Route::get('store', [ItemController::class, 'types']);
+Route::post('store', [ItemController::class, 'store'])->name('store');

@@ -7,17 +7,27 @@
 </head>
 
 <body>
+	@if($errors->any())
+		<div style="color:red">
+			<ul>
+				@foreach ($errors->all() as $error)
+					<li>{{ $error }}</li>
+				@endforeach
+			</ul>
+		</div>
+	@endif
 	<form action="{{ route('store') }}" method="POST">
 		@csrf
 		<div>
-			<label>名前</label>
-			<input type="text" name="name">
+			<label>商品名</label>
+			<input type="text" name="name" value="{{ old('name') }}">
 		</div>
 		<div>
 			<label>種別</label>
 			<select name="type_id">
 				@foreach ($types as $type)
-				<option value="{{ $type->id }}">
+				<option value="{{ $type->id }}"
+				@selected($type->id == old('type_id'))>
 					{{ $type->type_name }}
 				</option>
 				@endforeach
@@ -25,7 +35,7 @@
 		</div>
 		<div>
 			<label>詳細</label>
-			<input type="text" name="detail">
+			<input type="text" name="detail"  value="{{ old('detail') }}">
 		</div>
 		<input type="submit" value="登録">
 	</form>
