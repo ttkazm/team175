@@ -28,3 +28,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('store', [ItemController::class, 'show'])->name('name');
 Route::get('store', [ItemController::class, 'types']);
 Route::post('store', [ItemController::class, 'store'])->name('store');
+Route::get('edit/{id}', [ItemController::class, 'itemshow']);
+Route::post('update/{id}', [ItemController::class, 'update'])->name('update');

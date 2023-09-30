@@ -52,7 +52,7 @@
                         <td>{{ $result->name }}</td>
                         <td>{{ $result->type_name }}</td>
                         <td>{{ $result->detail }}</td>
-                        <td><button class="btn btn-default"><a href="/edit/{id}">商品詳細</a></button></td>
+                        <td><button class="btn btn-default"><a href="/edit/{{ $result->id }}">商品詳細</a></button></td>
                     </td>
                 </tr>
                 @endforeach

@@ -55,27 +55,27 @@ class ItemController extends Controller
             ->orderBy('items.created_at','asc')->get();
         }
 
-        if($keyword == "バーガー"){
-            $results = Item::where('type','=',10)
+        if($keyword == "パン"){
+            $results = Item::where('type','=',1)
             ->join('types', 'items.type', '=', 'types.id')
             ->select('items.id','items.name', 'types.type_name', 'items.detail')
             ->orderBy('items.created_at','asc')->get();
         }
-            elseif($keyword == "サイド"){
-                $results = Item::where('type','=',20)
+            elseif($keyword == "おにぎり"){
+                $results = Item::where('type','=',2)
                 ->join('types', 'items.type', '=', 'types.id')
                 ->select('items.id','items.name', 'types.type_name', 'items.detail')
                 ->orderBy('items.created_at','asc')->get();
             }
 
-            elseif($keyword == "ドリンク"){
-                $results = Item::where('type','=',30)
+            elseif($keyword == "飲み物"){
+                $results = Item::where('type','=',3)
                 ->join('types', 'items.type', '=', 'types.id')
                 ->select('items.id','items.name', 'types.type_name', 'items.detail')
                 ->orderBy('items.created_at','asc')->get();
             }
-            elseif($keyword == "セット"){
-                $results = Item::where('type','=',40)
+            elseif($keyword == "バーガー"){
+                $results = Item::where('type','=',4)
                 ->join('types', 'items.type', '=', 'types.id')
                 ->select('items.id','items.name', 'types.type_name', 'items.detail')
                 ->orderBy('items.created_at','asc')->get();
@@ -97,8 +97,8 @@ class ItemController extends Controller
         ]);
      }
 
-}
-     * 商品登録画面を表示
+
+     /* 商品登録画面を表示
      */
     public function show(): View
     {
@@ -139,7 +139,32 @@ class ItemController extends Controller
         }
 
         // 登録完了後、登録画面に戻る
-        return redirect(route('store'));
+        return redirect('/items');
 
     }
+
+    public function itemshow($id)
+    {
+        $item = Item::find($id);
+        $types = Type::all();
+
+        return view('items.edit',compact('item','types'));
+
+    }
+
+    public function update(Request $request, $id)
+    {
+        $item = Item::find($id);
+        $types = Type::all();
+        $this->items = new Item();
+        $results = $this->items-> getLists();
+
+        $item->name = $request->name;
+        $item->type = $request->type_id;
+        $item->detail = $request->detail;
+        $item->update();
+
+        return redirect('/items');
+    }
+
 }
