@@ -6,14 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use App\Models\Type;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
-
-use function PHPSTORM_META\type;
-
 class Item extends Model
 {  
-
+    use HasFactory;
     public function types(){
         return $this->belongsTo(Type::class);
     }

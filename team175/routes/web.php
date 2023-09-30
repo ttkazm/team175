@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ItemController;
+use App\Models\Item;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,7 @@ Route::get('/search',[App\Http\Controllers\ItemController::class,'search'])->nam
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('store', [ItemController::class, 'show'])->name('name');
+Route::get('store', [ItemController::class, 'types']);
+Route::post('store', [ItemController::class, 'store'])->name('store');
