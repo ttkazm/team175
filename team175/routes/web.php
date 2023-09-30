@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/items',[App\Http\Controllers\ItemController::class,'index'])->name('items');
+Route::post('/search',[App\Http\Controllers\ItemController::class,'KeySearch'])->name('search');
+Route::get('/search',[App\Http\Controllers\ItemController::class,'search'])->name('search');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
