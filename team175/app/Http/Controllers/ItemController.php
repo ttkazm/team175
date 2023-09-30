@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Faker\Test\Provider\Collection;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
+use App\Http\Requests\ItemPostRequest;
 use App\Models\Type;
 use App\Models\Item;
 
@@ -28,7 +28,7 @@ class ItemController extends Controller
         $types = Type::all();
 
         // 商品種別一覧をレスポンスとして返す
-        return view('items/register', [
+        return view('items/store', [
             'types' => $types,
         ]);
     }
@@ -36,7 +36,7 @@ class ItemController extends Controller
     /**
      * 
      */
-    public function store(Request $request)
+    public function store(ItemPostRequest $request)
     {
         // 商品登録用のオブジェクトを生成する
         $item = new Item();
