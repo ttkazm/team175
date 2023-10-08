@@ -14,6 +14,6 @@ class DatabaseSeeder extends Seeder
     {
         // TypesTableSeederファイルをシーディングの対象にする
         $this->call(TypesTableSeeder::class);
-        $this->call(ItemsTableSeeder::class);
+        // $this->call(ItemsTableSeeder::class);
     }
 }

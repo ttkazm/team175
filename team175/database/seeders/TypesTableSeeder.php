@@ -18,6 +18,7 @@ class TypesTableSeeder extends Seeder
             ['type_name' => 'パン'],
             ['type_name' => 'おにぎり'],
             ['type_name' => '飲み物'],
+            ['type_name' => 'バーガー'],
         ];
 
         // 登録処理

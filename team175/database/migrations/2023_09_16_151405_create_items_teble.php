@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('items', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->unsigned()->index();
-            $table->string('name', 100)->index();
-            $table->integer('type')->nullable();
-            $table->string('detail', 500)->nullable();
+            $table->bigIncrements('id')->index()->comment('ID');
+            $table->bigInteger('user_id')->index()->comment('ユーザーID');
+            $table->string('name',100)->index()->comment('名前');
+            $table->smallInteger('type')->nullable()->default(null)->comment('種別');
+            $table->string('detail',500)->nullable()->default(null)->comment('詳細');
             $table->timestamps();
         });
     }
